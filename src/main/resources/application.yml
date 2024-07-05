@@ -1,0 +1,12 @@
+spring:
+    application:
+        name : reactive-web
+
+    r2dbc:
+        url: r2dbc:mysql://localhost:3306/db7
+        username: root
+        password: Rahulgupta21
+    flyway:
+        url: jdbc:mysql://localhost:3306/db7
+        user: root
+        password: Rahulgupta21
