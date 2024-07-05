@@ -1,12 +1,10 @@
 package com.project.reactive_web.student;
 
-import lombok.RequiredArgsConstructor;
-
 import java.time.Duration;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
@@ -16,5 +14,9 @@ public class StudentService {
 
   public Flux<Student> findAll() {
     return studentRepository.findAll().delayElements(Duration.ofSeconds(1));
+  }
+
+  public Mono<Student> findById(Long id) {
+    return studentRepository.findById(id);
   }
 }
