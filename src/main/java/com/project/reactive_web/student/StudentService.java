@@ -19,4 +19,23 @@ public class StudentService {
   public Mono<Student> findById(Long id) {
     return studentRepository.findById(id);
   }
+
+  public Mono<Student> save(StudentRequest request) {
+    return studentRepository.save(
+      Student
+        .builder()
+        .firstname(request.getFirstname())
+        .lastname(request.getLastname())
+        .age(request.getAge())
+        .build()
+    );
+  }
+
+  public Flux<Student> findByFirstname(String firstname) {
+    return studentRepository.findAllByFirstnameContainingIgnoreCase(firstname);
+  }
+
+  public void deleteById(Long id) {
+    studentRepository.deleteById(id).subscribe();
+  }
 }
